@@ -59,9 +59,11 @@ class IKToggleCell: UITableViewCell {
     
     if toggle.isOn {
       defaults.set(true, forKey: defaultsKey)
+      print("[\(Self.self)]", #function, "on")
     }
     else {
       defaults.set(false, forKey: defaultsKey)
+      print("[\(Self.self)]", #function, "off")
     }
   }
 }

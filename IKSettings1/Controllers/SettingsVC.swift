@@ -7,42 +7,15 @@
 
 import UIKit
 
-struct About: SettingConfiguration {
-  var title: String = "About"
-  var info: String?
-  var settingType: SettingsType = .group
-  var actionHandler: TapHandler? = { print("About") }
-}
-
-struct Privacy: SettingConfiguration {
-  var title: String = "Privacy"
-  var info: String?
-  var settingType: SettingsType = .group
-  var actionHandler: TapHandler? = {  }
-}
-
-struct LogOut: SettingConfiguration {
-  var title: String = "Log Out"
-  var info: String?
-  var settingType: SettingsType = .action
-  var actionHandler: TapHandler? = { print("Log out") }
-}
-
-struct Share: SettingConfiguration {
-  var title: String = "Share"
-  var info: String? = "com.IKSettings1.Settings.ShareDataKey"
-  var settingType: SettingsType = .toggle
-  var actionHandler: TapHandler?
-}
-
 class SettingsVC: UIViewController {
   let tableView = UITableView()
   
-  var testPanel = SettingsContainer(title: "Tester", settingType: .action)
-  var aboutPanel = About()
-  var privacyPanel = Privacy()
-  var logoutPanel = LogOut()
-  
+  var infoPanel = SettingsContainer(title: "App Version", info: "1.0.0.1", settingType: .info)
+  var aboutPanel = SettingsContainer(title: "About", settingType: .action)
+  var privacyPanel = SettingsContainer(title: "Privacy", settingType: .action)
+  var logoutPanel = SettingsContainer(title: "Log Out", settingType: .action)
+  var sharePanel = SettingsContainer(title: "Share", info: "com.IKSettings1.Settings.ShareDataKey", settingType: .toggle)
+
   var settingsDataSource = MainSettingsDataSource()
   
   var settingsTitle = "Settings"
@@ -55,23 +28,18 @@ class SettingsVC: UIViewController {
     configureView()
   }
   
-  private func configureDatasource() {
-        
-    testPanel.actionHandler       = { self.testAction() }
+  func configureDatasource() {
     aboutPanel.actionHandler      = { self.genericPrintAction("About") }
     privacyPanel.actionHandler    = { self.genericPrintAction("Privacy") }
     logoutPanel.actionHandler     = { self.logoutAction() }
     
-    settingsDataSource.configuration.append(testPanel)
+    settingsDataSource.configuration.append(infoPanel)
     settingsDataSource.configuration.append(aboutPanel)
     settingsDataSource.configuration.append(privacyPanel)
     settingsDataSource.configuration.append(logoutPanel)
+    settingsDataSource.configuration.append(sharePanel)
   }
-  
-  private func testAction() {
-    print("Test")
-  }
-  
+
   private func logoutAction() {
     print("Log out")
   }
@@ -121,10 +89,6 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
       case .toggle:
         return configureToggleCell(title: title, defaultsKey: datasource.info ?? "", at: indexPath)
     }
-  }
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 40
   }
   
   private func configureSettingsCell(title: String, infoText: String, at indexPath: IndexPath) -> IKSettingsCell {
