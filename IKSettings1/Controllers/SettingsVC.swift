@@ -16,7 +16,7 @@ class SettingsVC: UIViewController {
   var logoutPanel = SettingsContainer(title: "Log Out", settingType: .action)
   var sharePanel = SettingsContainer(title: "Share", info: "com.IKSettings1.Settings.ShareDataKey", settingType: .toggle)
 
-  var settingsDataSource = MainSettingsDataSource()
+  var settingsDataSource: SettingsDataSource! = MainSettingsDataSource()
   
   var settingsTitle = "Settings"
 
@@ -24,11 +24,11 @@ class SettingsVC: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .systemMint
     
-    configureDatasource()
+    configureDataSource()
     configureView()
   }
   
-  func configureDatasource() {
+  func configureDataSource() {
     aboutPanel.actionHandler      = { self.genericPrintAction("About") }
     privacyPanel.actionHandler    = { self.genericPrintAction("Privacy") }
     logoutPanel.actionHandler     = { self.logoutAction() }

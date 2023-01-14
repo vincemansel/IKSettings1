@@ -5,6 +5,8 @@
 //  Created by Vince Mansel on 1/13/23.
 //
 
+import UIKit
+
 enum SettingsType {
   case info, action, group, toggle
 }
@@ -18,4 +20,15 @@ protocol SettingConfiguration {
 
 protocol SettingsDataSource {
   var configuration: [SettingConfiguration] { get set }
+}
+
+protocol SettingsCapable: AnyObject, UITableViewDataSource, UITableViewDelegate {
+  var settingsTitle: String? { get set }
+  
+  var tableView: UITableView! { get set }
+  var settingsDataSource: SettingsDataSource! { get set }
+  
+  func setTitle()
+  func configureDataSource()
+  
 }

@@ -20,6 +20,8 @@
 		AF6CF6D929726C0800F592BE /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D829726C0800F592BE /* SettingsVC.swift */; };
 		AF6CF6DC2972795400F592BE /* SetingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6DB2972795400F592BE /* SetingsProtocols.swift */; };
 		AF6CF6DF2972799500F592BE /* MainSettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */; };
+		AF6CF6E329732F3E00F592BE /* BaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */; };
+		AF6CF6E52973399C00F592BE /* MainSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		AF6CF6D829726C0800F592BE /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		AF6CF6DB2972795400F592BE /* SetingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetingsProtocols.swift; sourceTree = "<group>"; };
 		AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsDataSource.swift; sourceTree = "<group>"; };
+		AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsVC.swift; sourceTree = "<group>"; };
+		AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				AF6CF6D829726C0800F592BE /* SettingsVC.swift */,
+				AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */,
+				AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +217,8 @@
 				AF6CF6CE2972449C00F592BE /* IKSettingsCell.swift in Sources */,
 				AF6CF6BB297241E000F592BE /* ViewController.swift in Sources */,
 				AF6CF6DC2972795400F592BE /* SetingsProtocols.swift in Sources */,
+				AF6CF6E329732F3E00F592BE /* BaseSettingsVC.swift in Sources */,
+				AF6CF6E52973399C00F592BE /* MainSettingsVC.swift in Sources */,
 				AF6CF6D629725E8500F592BE /* IKToggleCell.swift in Sources */,
 				AF6CF6D229724F8200F592BE /* IKInfoLabel.swift in Sources */,
 				AF6CF6B7297241E000F592BE /* AppDelegate.swift in Sources */,
