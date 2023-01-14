@@ -20,7 +20,7 @@ class MainSettingsVC: BaseSettingsVC {
   }
 
   override func configureDataSource() {
-    aboutPanel.actionHandler      = { self.genericPrintAction("About") }
+    aboutPanel.actionHandler      = { self.showAboutSettings() }
     privacyPanel.actionHandler    = { self.genericPrintAction("Privacy") }
     logoutPanel.actionHandler     = { self.logoutAction() }
 
@@ -35,5 +35,13 @@ class MainSettingsVC: BaseSettingsVC {
   
   private func genericPrintAction(_ text: String) {
     print(text)
+  }
+}
+
+// MARK: Actions
+extension MainSettingsVC {
+  func showAboutSettings() {
+    let aboutSettingsVC = AboutSettingsVC(settingsTitle: "About")
+    navigationController?.pushViewController(aboutSettingsVC, animated: true)
   }
 }

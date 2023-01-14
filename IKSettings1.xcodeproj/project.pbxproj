@@ -22,6 +22,7 @@
 		AF6CF6DF2972799500F592BE /* MainSettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */; };
 		AF6CF6E329732F3E00F592BE /* BaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */; };
 		AF6CF6E52973399C00F592BE /* MainSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */; };
+		AF6CF6E7297343D400F592BE /* AboutSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsDataSource.swift; sourceTree = "<group>"; };
 		AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsVC.swift; sourceTree = "<group>"; };
 		AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsVC.swift; sourceTree = "<group>"; };
+		AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				AF6CF6D829726C0800F592BE /* SettingsVC.swift */,
 				AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */,
 				AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */,
+				AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF6CF6DF2972799500F592BE /* MainSettingsDataSource.swift in Sources */,
+				AF6CF6E7297343D400F592BE /* AboutSettingsVC.swift in Sources */,
 				AF6CF6D42972526A00F592BE /* IKActionCell.swift in Sources */,
 				AF6CF6CE2972449C00F592BE /* IKSettingsCell.swift in Sources */,
 				AF6CF6BB297241E000F592BE /* ViewController.swift in Sources */,
