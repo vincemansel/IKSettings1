@@ -15,6 +15,7 @@
 		AF6CF6CE2972449C00F592BE /* IKSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6CD2972449C00F592BE /* IKSettingsCell.swift */; };
 		AF6CF6D029724EBF00F592BE /* IKTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6CF29724EBF00F592BE /* IKTitleLabel.swift */; };
 		AF6CF6D229724F8200F592BE /* IKInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D129724F8200F592BE /* IKInfoLabel.swift */; };
+		AF6CF6D42972526A00F592BE /* IKActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D32972526A00F592BE /* IKActionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AF6CF6CD2972449C00F592BE /* IKSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKSettingsCell.swift; sourceTree = "<group>"; };
 		AF6CF6CF29724EBF00F592BE /* IKTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKTitleLabel.swift; sourceTree = "<group>"; };
 		AF6CF6D129724F8200F592BE /* IKInfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKInfoLabel.swift; sourceTree = "<group>"; };
+		AF6CF6D32972526A00F592BE /* IKActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKActionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				AF6CF6CD2972449C00F592BE /* IKSettingsCell.swift */,
+				AF6CF6D32972526A00F592BE /* IKActionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6CF6D42972526A00F592BE /* IKActionCell.swift in Sources */,
 				AF6CF6CE2972449C00F592BE /* IKSettingsCell.swift in Sources */,
 				AF6CF6BB297241E000F592BE /* ViewController.swift in Sources */,
 				AF6CF6D229724F8200F592BE /* IKInfoLabel.swift in Sources */,

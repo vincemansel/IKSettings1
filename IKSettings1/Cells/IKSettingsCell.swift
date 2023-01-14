@@ -15,7 +15,7 @@ class IKSettingsCell: UITableViewCell {
   
   static let reuseId = "IKSettingsCell"
   
-  let titleLabel = IKTitleLabel(textAlignment: .left, fontSize: 20)
+  let titleLabel = IKTitleLabel(textAlignment: .left, fontSize: 16)
   let infoLabel  = IKInfoLabel(textAlignment: .right, fontSize: 12)
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

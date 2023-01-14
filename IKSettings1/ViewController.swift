@@ -30,23 +30,32 @@ class ViewController: UIViewController {
     tableView.rowHeight = 75
     
     tableView.register(IKSettingsCell.self, forCellReuseIdentifier: IKSettingsCell.reuseId)
-    
+    tableView.register(IKActionCell.self, forCellReuseIdentifier: IKActionCell.reuseId)
+
     tableView.backgroundColor = .systemBackground
   }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return 2
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: IKSettingsCell.reuseId, for: indexPath) as? IKSettingsCell else {
-      return UITableViewCell()
-    }
-    
-    cell.set(title: "Title", infoText: "Informational Text")
-    return cell
+    switch indexPath.row {
+      case 0:
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: IKSettingsCell.reuseId, for: indexPath) as? IKSettingsCell else { return UITableViewCell() }
+        cell.set(title: "Title", infoText: "Informational Text")
+        return cell
+      case 1:
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: IKActionCell.reuseId, for: indexPath) as? IKActionCell else { return UITableViewCell() }
+        cell.set(title: "Action Title", content: IKActionCell.Content(tapHandler: {
+          print("Tapped")
+        }))
+        return cell
+      default:
+        return UITableViewCell()
+    }    
   }
 }
 
