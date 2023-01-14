@@ -17,6 +17,7 @@
 		AF6CF6D229724F8200F592BE /* IKInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D129724F8200F592BE /* IKInfoLabel.swift */; };
 		AF6CF6D42972526A00F592BE /* IKActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D32972526A00F592BE /* IKActionCell.swift */; };
 		AF6CF6D629725E8500F592BE /* IKToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D529725E8500F592BE /* IKToggleCell.swift */; };
+		AF6CF6D929726C0800F592BE /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D829726C0800F592BE /* SettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AF6CF6D129724F8200F592BE /* IKInfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKInfoLabel.swift; sourceTree = "<group>"; };
 		AF6CF6D32972526A00F592BE /* IKActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKActionCell.swift; sourceTree = "<group>"; };
 		AF6CF6D529725E8500F592BE /* IKToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKToggleCell.swift; sourceTree = "<group>"; };
+		AF6CF6D829726C0800F592BE /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,7 @@
 				AF6CF6CC2972447100F592BE /* Cells */,
 				AF6CF6CB2972444200F592BE /* Custom Views */,
 				AF6CF6CA297243DA00F592BE /* Support */,
-				AF6CF6BA297241E000F592BE /* ViewController.swift */,
+				AF6CF6D729726BD500F592BE /* Controllers */,
 			);
 			path = IKSettings1;
 			sourceTree = "<group>";
@@ -101,6 +103,15 @@
 				AF6CF6D529725E8500F592BE /* IKToggleCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		AF6CF6D729726BD500F592BE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AF6CF6BA297241E000F592BE /* ViewController.swift */,
+				AF6CF6D829726C0800F592BE /* SettingsVC.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				AF6CF6B7297241E000F592BE /* AppDelegate.swift in Sources */,
 				AF6CF6B9297241E000F592BE /* SceneDelegate.swift in Sources */,
 				AF6CF6D029724EBF00F592BE /* IKTitleLabel.swift in Sources */,
+				AF6CF6D929726C0800F592BE /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

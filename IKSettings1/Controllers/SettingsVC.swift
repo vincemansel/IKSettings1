@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsVC.swift
 //  IKSettings1
 //
 //  Created by Vince Mansel on 1/13/23.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsVC: UIViewController {
   let tableView = UITableView()
-  
+
   override func viewDidLoad() {
-    super.viewDidLoad()    
+    super.viewDidLoad()
     view.backgroundColor = .systemMint
     
     configureView()
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
   }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 4
   }
@@ -53,7 +53,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return configureToggleCell(title: "Toggle", defaultsKey: "ShareData", at: indexPath)
       default:
         return UITableViewCell()
-    }    
+    }
   }
   
   private func configureSettingsCell(title: String, informationalText: String, at indexPath: IndexPath) -> IKSettingsCell {
@@ -74,4 +74,3 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     return cell
   }
 }
-
