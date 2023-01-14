@@ -7,10 +7,43 @@
 
 import UIKit
 
+struct About: SettingConfiguration {
+  var title: String = "About"
+  var info: String?
+  var settingType: SettingsType = .group
+  var actionHandler: TapHandler? = { print("About") }
+}
+
+struct Privacy: SettingConfiguration {
+  var title: String = "Privacy"
+  var info: String?
+  var settingType: SettingsType = .group
+  var actionHandler: TapHandler? = {  }
+}
+
+struct LogOut: SettingConfiguration {
+  var title: String = "Log Out"
+  var info: String?
+  var settingType: SettingsType = .action
+  var actionHandler: TapHandler? = { print("Log out") }
+}
+
+struct Share: SettingConfiguration {
+  var title: String = "Share"
+  var info: String? = "com.IKSettings1.Settings.ShareDataKey"
+  var settingType: SettingsType = .toggle
+  var actionHandler: TapHandler?
+}
+
 class SettingsVC: UIViewController {
   let tableView = UITableView()
   
-  let settingsDataSource = MainSettingsDataSource()
+  var testPanel = SettingsContainer(title: "Tester", settingType: .action)
+  var aboutPanel = About()
+  var privacyPanel = Privacy()
+  var logoutPanel = LogOut()
+  
+  var settingsDataSource = MainSettingsDataSource()
   
   var settingsTitle = "Settings"
 
@@ -18,7 +51,33 @@ class SettingsVC: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .systemMint
     
+    configureDatasource()
     configureView()
+  }
+  
+  private func configureDatasource() {
+        
+    testPanel.actionHandler       = { self.testAction() }
+    aboutPanel.actionHandler      = { self.genericPrintAction("About") }
+    privacyPanel.actionHandler    = { self.genericPrintAction("Privacy") }
+    logoutPanel.actionHandler     = { self.logoutAction() }
+    
+    settingsDataSource.configuration.append(testPanel)
+    settingsDataSource.configuration.append(aboutPanel)
+    settingsDataSource.configuration.append(privacyPanel)
+    settingsDataSource.configuration.append(logoutPanel)
+  }
+  
+  private func testAction() {
+    print("Test")
+  }
+  
+  private func logoutAction() {
+    print("Log out")
+  }
+  
+  private func genericPrintAction(_ text: String) {
+    print(text)
   }
   
   private func configureView() {
@@ -56,9 +115,9 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
       case .info:
         return configureSettingsCell(title: title, infoText: datasource.info ?? "", at: indexPath)
       case .action:
-        return configureActionCell(title: title, handler: { print("tapped") }, at: indexPath)
+        return configureActionCell(title: title, handler: datasource.actionHandler!, at: indexPath)
       case .group:
-        return configureActionCell(title: title, handler: { print("Group")}, at: indexPath)
+        return configureActionCell(title: title, handler: datasource.actionHandler!, at: indexPath)
       case .toggle:
         return configureToggleCell(title: title, defaultsKey: datasource.info ?? "", at: indexPath)
     }
