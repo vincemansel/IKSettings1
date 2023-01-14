@@ -35,7 +35,8 @@ class ViewController: UIViewController {
   }
   
   @objc func showSettings() {
-    let navVC = UINavigationController(rootViewController: MainSettingsVC(settingsTitle: "Settings"))
+    //let navVC = UINavigationController(rootViewController: MainSettingsVC(settingsTitle: "Settings"))
+    let navVC = UINavigationController(rootViewController: LoginVC())
     navVC.modalPresentationStyle = .fullScreen
     present(navVC, animated: true)
   }

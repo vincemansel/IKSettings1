@@ -23,6 +23,9 @@
 		AF6CF6E329732F3E00F592BE /* BaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */; };
 		AF6CF6E52973399C00F592BE /* MainSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */; };
 		AF6CF6E7297343D400F592BE /* AboutSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */; };
+		AF6CF6E92973555900F592BE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E82973555900F592BE /* LoginVC.swift */; };
+		AF6CF6EB297355AD00F592BE /* IKLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6EA297355AD00F592BE /* IKLoginTextField.swift */; };
+		AF6CF6ED2973563B00F592BE /* IKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6EC2973563B00F592BE /* IKButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsVC.swift; sourceTree = "<group>"; };
 		AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsVC.swift; sourceTree = "<group>"; };
 		AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsVC.swift; sourceTree = "<group>"; };
+		AF6CF6E82973555900F592BE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		AF6CF6EA297355AD00F592BE /* IKLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKLoginTextField.swift; sourceTree = "<group>"; };
+		AF6CF6EC2973563B00F592BE /* IKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,8 @@
 			children = (
 				AF6CF6CF29724EBF00F592BE /* IKTitleLabel.swift */,
 				AF6CF6D129724F8200F592BE /* IKInfoLabel.swift */,
+				AF6CF6EA297355AD00F592BE /* IKLoginTextField.swift */,
+				AF6CF6EC2973563B00F592BE /* IKButton.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -125,6 +133,7 @@
 				AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */,
 				AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */,
 				AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */,
+				AF6CF6E82973555900F592BE /* LoginVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -224,11 +233,14 @@
 				AF6CF6E329732F3E00F592BE /* BaseSettingsVC.swift in Sources */,
 				AF6CF6E52973399C00F592BE /* MainSettingsVC.swift in Sources */,
 				AF6CF6D629725E8500F592BE /* IKToggleCell.swift in Sources */,
+				AF6CF6EB297355AD00F592BE /* IKLoginTextField.swift in Sources */,
 				AF6CF6D229724F8200F592BE /* IKInfoLabel.swift in Sources */,
 				AF6CF6B7297241E000F592BE /* AppDelegate.swift in Sources */,
 				AF6CF6B9297241E000F592BE /* SceneDelegate.swift in Sources */,
 				AF6CF6D029724EBF00F592BE /* IKTitleLabel.swift in Sources */,
 				AF6CF6D929726C0800F592BE /* SettingsVC.swift in Sources */,
+				AF6CF6E92973555900F592BE /* LoginVC.swift in Sources */,
+				AF6CF6ED2973563B00F592BE /* IKButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
