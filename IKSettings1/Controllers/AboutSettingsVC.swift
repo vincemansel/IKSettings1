@@ -11,12 +11,6 @@ class AboutSettingsVC: BaseSettingsVC {
   var appVersionPanel = SettingsContainer(title: "App Version", settingType: .info)
   var appLanguagePanel = SettingsContainer(title: "App Language", settingType: .info)
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    settingsDataSource = MainSettingsDataSource()
-  }
-  
   override func configureDataSource() {
     appVersionPanel.info  = getCurrentAppVersion()
     appLanguagePanel.info = getPreferredLanguageCode()

@@ -24,11 +24,8 @@ protocol SettingsDataSource {
 
 protocol SettingsCapable: AnyObject, UITableViewDataSource, UITableViewDelegate {
   var settingsTitle: String? { get set }
-  
   var tableView: UITableView! { get set }
-  var settingsDataSource: SettingsDataSource! { get set }
   
   func setTitle()
   func configureDataSource()
-  
 }

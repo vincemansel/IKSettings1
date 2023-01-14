@@ -7,9 +7,10 @@
 
 import UIKit
 
-class BaseSettingsVC: UIViewController, SettingsCapable {
+class BaseSettingsVC: UIViewController, SettingsCapable {  
 
-  var settingsDataSource: SettingsDataSource!
+  var settingsDataSource: SettingsDataSource = MainSettingsDataSource()
+  
   var tableView: UITableView!
   var settingsTitle: String?
   
@@ -22,8 +23,8 @@ class BaseSettingsVC: UIViewController, SettingsCapable {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
     setTitle()
     configureDataSource()
