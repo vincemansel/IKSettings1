@@ -6,23 +6,42 @@
 //
 
 import UIKit
+import Combine
 
 class LoginVC: UIViewController {
   
   let usernameTextField = IKLoginTextField()
   let passwordTextField = IKLoginTextField()
   let actionButton      = IKButton()
+  
+  @Published private var username = ""
+  @Published private var password = ""
+  
+  private var actionButtonSubscriber: AnyCancellable?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
     configureViewController()
     configureSubviews()
+    configureTextFields()
     configureActionButton()
+  }
+  
+  private func configureTextFields() {
+    usernameTextField.setPlaceholderText("Username")
+    passwordTextField.setPlaceholderText("Password")
+    passwordTextField.isSecureTextEntry = true
+    
+    usernameTextField.delegate = self
+    passwordTextField.delegate = self
   }
   
   private func configureActionButton() {
     actionButton.setTitle("Log In", for: .normal)
+    actionButton.isEnabled = false
+    
+    actionButtonSubscription()
   }
   
   private func configureViewController() {
@@ -54,5 +73,34 @@ class LoginVC: UIViewController {
       actionButton.heightAnchor.constraint(equalToConstant: 44),
       actionButton.widthAnchor.constraint(equalToConstant: 150),
     ])
+  }
+}
+
+// MARK: Combine: ActionButton
+extension LoginVC {
+  private var validatedToEnableActionButton: AnyPublisher<Bool, Never> {
+    return Publishers.CombineLatest($username, $password)
+      .map { username, password in
+        username.count >= 6 && password.count >= 8
+      }.eraseToAnyPublisher()
+  }
+  
+  private func actionButtonSubscription() {
+    actionButtonSubscriber = validatedToEnableActionButton
+      .receive(on: RunLoop.main)
+      .assign(to: \.isEnabled, on: actionButton)
+  }
+}
+
+extension LoginVC: UITextFieldDelegate {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+                 replacementString string: String) -> Bool {
+    let textFieldText = textField.text ?? ""
+    let text = (textFieldText as NSString).replacingCharacters(in: range, with: string)
+    
+    if textField == usernameTextField { username = text }
+    if textField == passwordTextField { password = text }
+    
+    return true
   }
 }
