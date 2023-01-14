@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     
     tableView.register(IKSettingsCell.self, forCellReuseIdentifier: IKSettingsCell.reuseId)
     tableView.register(IKActionCell.self, forCellReuseIdentifier: IKActionCell.reuseId)
+    tableView.register(IKToggleCell.self, forCellReuseIdentifier: IKToggleCell.reuseId)
 
     tableView.backgroundColor = .systemBackground
   }
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return 3
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,6 +53,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.set(title: "Action Title", content: IKActionCell.Content(tapHandler: {
           print("Tapped")
         }))
+        return cell
+      case 2:
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: IKToggleCell.reuseId, for: indexPath) as? IKToggleCell else { return UITableViewCell() }
+        cell.set(title: "Toggle", defaultsKey: "shareData")
         return cell
       default:
         return UITableViewCell()

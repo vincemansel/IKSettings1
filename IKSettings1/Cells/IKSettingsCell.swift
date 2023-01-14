@@ -35,7 +35,6 @@ class IKSettingsCell: UITableViewCell {
   func configure() {
     contentView.addSubview(titleLabel)
     contentView.addSubview(infoLabel)
-    translatesAutoresizingMaskIntoConstraints = false
     
     let padding: CGFloat = 20
     

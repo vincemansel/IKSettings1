@@ -57,7 +57,6 @@ class IKActionCell: UITableViewCell {
     actionImage.image = UIImage(systemName: "chevron.right")
     actionImage.tintColor = .label
 
-    translatesAutoresizingMaskIntoConstraints = false
     actionImage.translatesAutoresizingMaskIntoConstraints = false
     
     let padding: CGFloat = 20
