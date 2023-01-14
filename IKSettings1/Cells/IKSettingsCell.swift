@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum SettingsType {
-  case informational, action, group, toggle
-}
-
 class IKSettingsCell: UITableViewCell {
   
   static let reuseId = "IKSettingsCell"

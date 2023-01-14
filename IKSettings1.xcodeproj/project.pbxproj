@@ -18,6 +18,8 @@
 		AF6CF6D42972526A00F592BE /* IKActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D32972526A00F592BE /* IKActionCell.swift */; };
 		AF6CF6D629725E8500F592BE /* IKToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D529725E8500F592BE /* IKToggleCell.swift */; };
 		AF6CF6D929726C0800F592BE /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D829726C0800F592BE /* SettingsVC.swift */; };
+		AF6CF6DC2972795400F592BE /* SetingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6DB2972795400F592BE /* SetingsProtocols.swift */; };
+		AF6CF6DF2972799500F592BE /* MainSettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		AF6CF6D32972526A00F592BE /* IKActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKActionCell.swift; sourceTree = "<group>"; };
 		AF6CF6D529725E8500F592BE /* IKToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKToggleCell.swift; sourceTree = "<group>"; };
 		AF6CF6D829726C0800F592BE /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		AF6CF6DB2972795400F592BE /* SetingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetingsProtocols.swift; sourceTree = "<group>"; };
+		AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 		AF6CF6B5297241E000F592BE /* IKSettings1 */ = {
 			isa = PBXGroup;
 			children = (
+				AF6CF6DD2972797200F592BE /* DataSources */,
+				AF6CF6DA2972791E00F592BE /* Protocols */,
 				AF6CF6CC2972447100F592BE /* Cells */,
 				AF6CF6CB2972444200F592BE /* Custom Views */,
 				AF6CF6CA297243DA00F592BE /* Support */,
@@ -112,6 +118,22 @@
 				AF6CF6D829726C0800F592BE /* SettingsVC.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AF6CF6DA2972791E00F592BE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AF6CF6DB2972795400F592BE /* SetingsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AF6CF6DD2972797200F592BE /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,9 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6CF6DF2972799500F592BE /* MainSettingsDataSource.swift in Sources */,
 				AF6CF6D42972526A00F592BE /* IKActionCell.swift in Sources */,
 				AF6CF6CE2972449C00F592BE /* IKSettingsCell.swift in Sources */,
 				AF6CF6BB297241E000F592BE /* ViewController.swift in Sources */,
+				AF6CF6DC2972795400F592BE /* SetingsProtocols.swift in Sources */,
 				AF6CF6D629725E8500F592BE /* IKToggleCell.swift in Sources */,
 				AF6CF6D229724F8200F592BE /* IKInfoLabel.swift in Sources */,
 				AF6CF6B7297241E000F592BE /* AppDelegate.swift in Sources */,

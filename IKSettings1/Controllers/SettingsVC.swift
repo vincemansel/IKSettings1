@@ -9,21 +9,27 @@ import UIKit
 
 class SettingsVC: UIViewController {
   let tableView = UITableView()
+  
+  let settingsDataSource = MainSettingsDataSource()
+  
+  var settingsTitle = "Settings"
 
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemMint
     
     configureView()
-    
-    tableView.reloadData()
   }
   
   private func configureView() {
+    title = settingsTitle
+    navigationController?.navigationBar.prefersLargeTitles = true
+    
+    view.addSubview(tableView)
+
     tableView.dataSource = self
     tableView.delegate = self
     
-    view.addSubview(tableView)
     tableView.frame = view.bounds
     tableView.rowHeight = 75
     
@@ -33,32 +39,38 @@ class SettingsVC: UIViewController {
 
     tableView.backgroundColor = .systemBackground
     tableView.allowsSelection = false
+    
+    tableView.reloadData()
   }
 }
 
 extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 4
+    return settingsDataSource.configuration.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    switch indexPath.row {
-      case 0:
-        return configureSettingsCell(title: "Title", informationalText: "InformationalText", at: indexPath)
-      case 1:
-        return configureActionCell(title: "Action", handler: { print("tapped") }, at: indexPath)
-      case 2:
-        return configureActionCell(title: "Group", handler: { print("Group")}, at: indexPath)
-      case 3:
-        return configureToggleCell(title: "Toggle", defaultsKey: "ShareData", at: indexPath)
-      default:
-        return UITableViewCell()
+    let datasource = settingsDataSource.configuration[indexPath.row]
+    let title = datasource.title
+    switch datasource.settingType {
+      case .info:
+        return configureSettingsCell(title: title, infoText: datasource.info ?? "", at: indexPath)
+      case .action:
+        return configureActionCell(title: title, handler: { print("tapped") }, at: indexPath)
+      case .group:
+        return configureActionCell(title: title, handler: { print("Group")}, at: indexPath)
+      case .toggle:
+        return configureToggleCell(title: title, defaultsKey: datasource.info ?? "", at: indexPath)
     }
   }
   
-  private func configureSettingsCell(title: String, informationalText: String, at indexPath: IndexPath) -> IKSettingsCell {
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 40
+  }
+  
+  private func configureSettingsCell(title: String, infoText: String, at indexPath: IndexPath) -> IKSettingsCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: IKSettingsCell.reuseId, for: indexPath) as? IKSettingsCell else { return UITableViewCell() as! IKSettingsCell }
-    cell.set(title: title, infoText: informationalText)
+    cell.set(title: title, infoText: infoText)
     return cell
   }
   

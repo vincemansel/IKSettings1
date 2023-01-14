@@ -35,6 +35,7 @@ class ViewController: UIViewController {
   }
   
   @objc func showSettings() {
-    present(SettingsVC(), animated: true)
+    let navVC = UINavigationController(rootViewController: SettingsVC())
+    present(navVC, animated: true)
   }
 }
