@@ -59,7 +59,7 @@ class LoginVC: UIViewController {
     
     NSLayoutConstraint.activate([
       usernameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      usernameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
+      usernameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -85),
       usernameTextField.heightAnchor.constraint(equalToConstant: 44),
       usernameTextField.widthAnchor.constraint(equalToConstant: 220),
       
