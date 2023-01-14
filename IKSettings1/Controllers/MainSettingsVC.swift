@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class MainSettingsVC: BaseSettingsVC {
     
@@ -26,7 +27,7 @@ class MainSettingsVC: BaseSettingsVC {
 
   override func configureDataSource() {
     aboutPanel.actionHandler      = { self.showAboutSettings() }
-    privacyPanel.actionHandler    = { self.genericPrintAction("Privacy") }
+    privacyPanel.actionHandler    = { self.presentPrivacyPolicy() }
     logoutPanel.actionHandler     = { self.logoutAction() }
 
     settingsDataSource.configuration.append(aboutPanel)
@@ -52,5 +53,19 @@ extension MainSettingsVC {
   
   private func genericPrintAction(_ text: String) {
     print(text)
+  }
+  
+  private func presentPrivacyPolicy() {
+    guard let url = URL(string: "https://github.com/ArthurGareginyan/privacy-policy-template") else {
+      print("Could not parse string for URL")
+      return
+    }
+    presentSafariVC(with: url)
+  }
+  
+  func presentSafariVC(with url: URL) {
+    let safariVC = SFSafariViewController(url: url)
+    safariVC.preferredControlTintColor = .systemBlue
+    present(safariVC, animated: true)
   }
 }
