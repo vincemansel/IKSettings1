@@ -73,6 +73,13 @@ class LoginVC: UIViewController {
   
   private func configureViewController() {
     view.backgroundColor = .systemBackground
+    
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
+    navigationItem.rightBarButtonItem = doneButton
+  }
+  
+  @objc func dismissVC() {
+    dismiss(animated: true)
   }
   
   private func configureSubviews() {
@@ -129,8 +136,8 @@ extension LoginVC {
 extension LoginVC {
   private var validatedCredentials: AnyPublisher<[String]?, Never> {
     return $credentials
-      .debounce(for: 0.5, scheduler: RunLoop.main)
       .dropFirst(1)
+      .debounce(for: 0.5, scheduler: RunLoop.main)
       .flatMap { credentials in
         return Future { promise in
           self.validateCredentials(credentials) { validated in
