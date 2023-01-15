@@ -26,6 +26,7 @@
 		AF6CF6E92973555900F592BE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E82973555900F592BE /* LoginVC.swift */; };
 		AF6CF6EB297355AD00F592BE /* IKLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6EA297355AD00F592BE /* IKLoginTextField.swift */; };
 		AF6CF6ED2973563B00F592BE /* IKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6EC2973563B00F592BE /* IKButton.swift */; };
+		AFC501582974BBEC00DDE623 /* PrivacySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC501572974BBEC00DDE623 /* PrivacySettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		AF6CF6E82973555900F592BE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AF6CF6EA297355AD00F592BE /* IKLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKLoginTextField.swift; sourceTree = "<group>"; };
 		AF6CF6EC2973563B00F592BE /* IKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKButton.swift; sourceTree = "<group>"; };
+		AFC501572974BBEC00DDE623 /* PrivacySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */,
 				AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */,
 				AF6CF6E82973555900F592BE /* LoginVC.swift */,
+				AFC501572974BBEC00DDE623 /* PrivacySettingsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				AF6CF6DC2972795400F592BE /* SetingsProtocols.swift in Sources */,
 				AF6CF6E329732F3E00F592BE /* BaseSettingsVC.swift in Sources */,
 				AF6CF6E52973399C00F592BE /* MainSettingsVC.swift in Sources */,
+				AFC501582974BBEC00DDE623 /* PrivacySettingsVC.swift in Sources */,
 				AF6CF6D629725E8500F592BE /* IKToggleCell.swift in Sources */,
 				AF6CF6EB297355AD00F592BE /* IKLoginTextField.swift in Sources */,
 				AF6CF6D229724F8200F592BE /* IKInfoLabel.swift in Sources */,

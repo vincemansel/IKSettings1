@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SafariServices
 
 class MainSettingsVC: BaseSettingsVC {
     
@@ -20,13 +19,12 @@ class MainSettingsVC: BaseSettingsVC {
   }
   
   private func configureViewController() {
-    view.backgroundColor = .systemBackground
     navigationItem.hidesBackButton = true
   }
 
   override func configureDataSource() {
-    aboutPanel.actionHandler      = { self.showAboutSettings() }
-    privacyPanel.actionHandler    = { self.presentPrivacyPolicy() }
+    aboutPanel.actionHandler      = { self.showNextSettings(self.aboutPanel.title) }
+    privacyPanel.actionHandler    = { self.showNextSettings(self.privacyPanel.title) }
     logoutPanel.actionHandler     = { self.logoutAction() }
     
     settingsDataSource.setConfiguration(aboutPanel, privacyPanel, logoutPanel)
@@ -39,9 +37,19 @@ class MainSettingsVC: BaseSettingsVC {
 
 // MARK: Settings Actions
 extension MainSettingsVC {
-  private func showAboutSettings() {
-    let aboutSettingsVC = AboutSettingsVC(settingsTitle: "About")
-    navigationController?.pushViewController(aboutSettingsVC, animated: true)
+  private func showNextSettings(_ title: String) {
+    var nextSettingsVC: BaseSettingsVC
+    
+    switch title {
+      case "About":
+        nextSettingsVC = AboutSettingsVC(settingsTitle: title)
+      case "Privacy":
+        nextSettingsVC = PrivacySettingsVC(settingsTitle: title)
+      default:
+        fatalError("Unknown VC: \(title)")
+    }
+    
+    navigationController?.pushViewController(nextSettingsVC, animated: true)
   }
   
   private func logoutAction() {
@@ -51,18 +59,5 @@ extension MainSettingsVC {
   private func genericPrintAction(_ text: String) {
     print(text)
   }
-  
-  private func presentPrivacyPolicy() {
-    guard let url = URL(string: "https://github.com/ArthurGareginyan/privacy-policy-template") else {
-      print("Could not parse string for URL")
-      return
-    }
-    presentSafariVC(with: url)
-  }
-  
-  func presentSafariVC(with url: URL) {
-    let safariVC = SFSafariViewController(url: url)
-    safariVC.preferredControlTintColor = .systemBlue
-    present(safariVC, animated: true)
-  }
+
 }

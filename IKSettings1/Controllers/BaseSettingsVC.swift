@@ -32,6 +32,8 @@ class BaseSettingsVC: UIViewController, SettingsCapable {
   }
   
   final func configureView() {
+    view.backgroundColor = .systemBackground
+
     title = settingsTitle
     navigationController?.navigationBar.prefersLargeTitles = true
     
