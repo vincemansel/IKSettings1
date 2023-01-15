@@ -16,8 +16,11 @@ class LoginVC: UIViewController {
   
   @Published private var username = ""
   @Published private var password = ""
+  @Published private var buttonTapped = false
+  @Published private var credentials = [String]()
   
   private var actionButtonSubscriber: AnyCancellable?
+  private var credentialsValidatedSubscriber: AnyCancellable?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -40,8 +43,13 @@ class LoginVC: UIViewController {
   private func configureActionButton() {
     actionButton.setTitle("Log In", for: .normal)
     actionButton.isEnabled = false
+    actionButton.addTarget(self, action: #selector(onActionButtonTapped), for: .touchUpInside)
     
-    actionButtonSubscription()
+    actionButtonSubscriptions()
+  }
+  
+  @objc func onActionButtonTapped() {
+    credentials = [username, password]
   }
   
   private func configureViewController() {
@@ -52,10 +60,6 @@ class LoginVC: UIViewController {
     view.addSubview(usernameTextField)
     view.addSubview(passwordTextField)
     view.addSubview(actionButton)
-    
-    usernameTextField.setPlaceholderText("Username")
-    passwordTextField.setPlaceholderText("Password")
-    passwordTextField.isSecureTextEntry = true
     
     NSLayoutConstraint.activate([
       usernameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -85,10 +89,37 @@ extension LoginVC {
       }.eraseToAnyPublisher()
   }
   
-  private func actionButtonSubscription() {
+  private func actionButtonSubscriptions() {
     actionButtonSubscriber = validatedToEnableActionButton
       .receive(on: RunLoop.main)
       .assign(to: \.isEnabled, on: actionButton)
+    
+    credentialsValidatedSubscriber = validatedCredentials
+      .map { $0 != nil }
+      .receive(on: RunLoop.main)
+      .sink(receiveValue: { result in
+        print("Validated = \(result)")
+      })
+  }
+}
+
+// MARK: Combine: Credential Validation
+extension LoginVC {
+  private var validatedCredentials: AnyPublisher<[String]?, Never> {
+    return $credentials
+      .debounce(for: 0.5, scheduler: RunLoop.main)
+      .dropFirst(1)
+      .flatMap { credentials in
+        return Future { promise in
+          self.validateCredentials(credentials) { validated in
+            promise(.success(validated ? credentials : nil))
+          }
+        }
+      }.eraseToAnyPublisher()
+  }
+  
+  func validateCredentials(_ credentials: [String], completion: (Bool) -> Void) {
+    completion(credentials.count == 2)
   }
 }
 
