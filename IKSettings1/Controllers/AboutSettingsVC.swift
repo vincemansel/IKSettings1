@@ -15,8 +15,7 @@ class AboutSettingsVC: BaseSettingsVC {
     appVersionPanel.info  = getCurrentAppVersion()
     appLanguagePanel.info = getPreferredLanguageCode()
     
-    settingsDataSource.configuration.append(appVersionPanel)
-    settingsDataSource.configuration.append(appLanguagePanel)
+    settingsDataSource.setConfiguration(appVersionPanel, appLanguagePanel)
   }
   
   private func getCurrentAppVersion() -> String {

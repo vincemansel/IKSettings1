@@ -28,10 +28,8 @@ class MainSettingsVC: BaseSettingsVC {
     aboutPanel.actionHandler      = { self.showAboutSettings() }
     privacyPanel.actionHandler    = { self.presentPrivacyPolicy() }
     logoutPanel.actionHandler     = { self.logoutAction() }
-
-    settingsDataSource.configuration.append(aboutPanel)
-    settingsDataSource.configuration.append(privacyPanel)
-    settingsDataSource.configuration.append(logoutPanel)
+    
+    settingsDataSource.setConfiguration(aboutPanel, privacyPanel, logoutPanel)
   }
   
   @objc func dismissVC() {
@@ -41,7 +39,7 @@ class MainSettingsVC: BaseSettingsVC {
 
 // MARK: Settings Actions
 extension MainSettingsVC {
-  func showAboutSettings() {
+  private func showAboutSettings() {
     let aboutSettingsVC = AboutSettingsVC(settingsTitle: "About")
     navigationController?.pushViewController(aboutSettingsVC, animated: true)
   }

@@ -20,6 +20,7 @@ protocol SettingConfiguration {
 
 protocol SettingsDataSource {
   var configuration: [SettingConfiguration] { get set }
+  mutating func setConfiguration(_ configs: SettingConfiguration ...)
 }
 
 protocol SettingsCapable: AnyObject, UITableViewDataSource, UITableViewDelegate {

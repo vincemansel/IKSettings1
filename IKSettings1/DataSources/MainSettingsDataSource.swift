@@ -7,6 +7,10 @@
 
 struct MainSettingsDataSource: SettingsDataSource {
   var configuration: [SettingConfiguration] = []
+  
+  mutating func setConfiguration(_ configs: SettingConfiguration ...) {
+    configs.forEach { config in configuration.append(config) }
+  }
 }
 
 struct SettingsContainer: SettingConfiguration {
