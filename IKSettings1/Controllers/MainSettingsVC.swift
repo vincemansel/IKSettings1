@@ -21,7 +21,6 @@ class MainSettingsVC: BaseSettingsVC {
   
   private func configureViewController() {
     view.backgroundColor = .systemBackground
-    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
     navigationItem.hidesBackButton = true
   }
 
@@ -48,7 +47,7 @@ extension MainSettingsVC {
   }
   
   private func logoutAction() {
-    print("Log out")
+    dismissVC()
   }
   
   private func genericPrintAction(_ text: String) {
