@@ -10,11 +10,14 @@ import Combine
 
 class LoginVC: UIViewController {
   
+  // MARK: Layout
+  
   let statusLabel       = UILabel()
   let usernameTextField = IKLoginTextField()
   let passwordTextField = IKLoginTextField()
   let actionButton      = IKButton()
   
+  // MARK: Eventing
   @Published private var username = ""
   @Published private var password = ""
   @Published private var credentials = [String]()
@@ -22,6 +25,8 @@ class LoginVC: UIViewController {
   private var actionButtonSubscriber: AnyCancellable?
   private var credentialsValidatedSubscriber: AnyCancellable?
 
+  // MARK: Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -38,6 +43,34 @@ class LoginVC: UIViewController {
     actionButtonSubscription()
     credentialSubscription()
   }
+
+  // MARK: Events and Actions
+  
+  @objc func onActionButtonTapped() {
+    self.credentials = [self.username, self.password]
+  }
+  
+  func onCredentialsResultsReady(_ result: Bool) {
+    defer {
+      credentials = []
+      credentialsValidatedSubscriber = nil
+      credentialSubscription()
+    }
+    
+    guard result else {
+      statusLabel.text = "Incorrect username or password.\nTry again."
+      return }
+    
+    navigationController?.pushViewController(MainSettingsVC(settingsTitle: "Settings"), animated: true)
+    
+    actionButtonSubscriber = nil
+  }
+  
+  @objc func dismissVC() {
+    dismiss(animated: true)
+  }
+  
+  // MARK: Configuration
   
   private func configureTextFields() {
     usernameTextField.setPlaceholderText("Username")
@@ -60,37 +93,13 @@ class LoginVC: UIViewController {
     statusLabel.textAlignment = .center
   }
   
-  @objc func onActionButtonTapped() {
-    self.credentials = [self.username, self.password]
-  }
-  
-  func onCredentialsResultsReady(_ result: Bool) {
-    defer {
-      credentials = []
-      credentialsValidatedSubscriber = nil
-      credentialSubscription()
-    }
-    
-    guard result else {
-      statusLabel.text = "Incorrect username or password.\nTry again."
-      return }
-    
-    navigationController?.pushViewController(MainSettingsVC(settingsTitle: "Settings"), animated: true)
-    
-    actionButtonSubscriber = nil
-  }
-  
   private func configureViewController() {
     view.backgroundColor = .systemBackground
     
     let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
     navigationItem.rightBarButtonItem = doneButton
   }
-  
-  @objc func dismissVC() {
-    dismiss(animated: true)
-  }
-  
+
   private func configureSubviews() {
     view.addSubview(statusLabel)
     view.addSubview(usernameTextField)

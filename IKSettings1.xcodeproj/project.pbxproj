@@ -17,7 +17,6 @@
 		AF6CF6D229724F8200F592BE /* IKInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D129724F8200F592BE /* IKInfoLabel.swift */; };
 		AF6CF6D42972526A00F592BE /* IKActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D32972526A00F592BE /* IKActionCell.swift */; };
 		AF6CF6D629725E8500F592BE /* IKToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D529725E8500F592BE /* IKToggleCell.swift */; };
-		AF6CF6D929726C0800F592BE /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6D829726C0800F592BE /* SettingsVC.swift */; };
 		AF6CF6DC2972795400F592BE /* SetingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6DB2972795400F592BE /* SetingsProtocols.swift */; };
 		AF6CF6DF2972799500F592BE /* MainSettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */; };
 		AF6CF6E329732F3E00F592BE /* BaseSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */; };
@@ -42,7 +41,6 @@
 		AF6CF6D129724F8200F592BE /* IKInfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKInfoLabel.swift; sourceTree = "<group>"; };
 		AF6CF6D32972526A00F592BE /* IKActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKActionCell.swift; sourceTree = "<group>"; };
 		AF6CF6D529725E8500F592BE /* IKToggleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKToggleCell.swift; sourceTree = "<group>"; };
-		AF6CF6D829726C0800F592BE /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		AF6CF6DB2972795400F592BE /* SetingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetingsProtocols.swift; sourceTree = "<group>"; };
 		AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsDataSource.swift; sourceTree = "<group>"; };
 		AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsVC.swift; sourceTree = "<group>"; };
@@ -131,12 +129,8 @@
 		AF6CF6D729726BD500F592BE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AF6CF6D829726C0800F592BE /* SettingsVC.swift */,
-				AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */,
-				AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */,
-				AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */,
-				AF6CF6E82973555900F592BE /* LoginVC.swift */,
-				AFC501572974BBEC00DDE623 /* PrivacySettingsVC.swift */,
+				AFC5015A2974C16300DDE623 /* Login */,
+				AFC501592974C15500DDE623 /* Settings */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -155,6 +149,25 @@
 				AF6CF6DE2972799500F592BE /* MainSettingsDataSource.swift */,
 			);
 			path = DataSources;
+			sourceTree = "<group>";
+		};
+		AFC501592974C15500DDE623 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AF6CF6E229732F3E00F592BE /* BaseSettingsVC.swift */,
+				AF6CF6E42973399C00F592BE /* MainSettingsVC.swift */,
+				AF6CF6E6297343D400F592BE /* AboutSettingsVC.swift */,
+				AFC501572974BBEC00DDE623 /* PrivacySettingsVC.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AFC5015A2974C16300DDE623 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AF6CF6E82973555900F592BE /* LoginVC.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,7 +255,6 @@
 				AF6CF6B7297241E000F592BE /* AppDelegate.swift in Sources */,
 				AF6CF6B9297241E000F592BE /* SceneDelegate.swift in Sources */,
 				AF6CF6D029724EBF00F592BE /* IKTitleLabel.swift in Sources */,
-				AF6CF6D929726C0800F592BE /* SettingsVC.swift in Sources */,
 				AF6CF6E92973555900F592BE /* LoginVC.swift in Sources */,
 				AF6CF6ED2973563B00F592BE /* IKButton.swift in Sources */,
 			);
