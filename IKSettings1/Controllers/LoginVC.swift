@@ -31,6 +31,13 @@ class LoginVC: UIViewController {
     configureActionButton()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    actionButtonSubscription()
+    credentialSubscription()
+  }
+  
   private func configureTextFields() {
     usernameTextField.setPlaceholderText("Username")
     passwordTextField.setPlaceholderText("Password")
@@ -44,12 +51,24 @@ class LoginVC: UIViewController {
     actionButton.setTitle("Log In", for: .normal)
     actionButton.isEnabled = false
     actionButton.addTarget(self, action: #selector(onActionButtonTapped), for: .touchUpInside)
-    
-    actionButtonSubscriptions()
   }
   
   @objc func onActionButtonTapped() {
-    credentials = [username, password]
+    self.credentials = [self.username, self.password]
+  }
+  
+  func onCredentialsResultsReady(_ result: Bool) {
+    defer {
+      credentials = []
+      credentialsValidatedSubscriber = nil
+      credentialSubscription()
+    }
+    
+    guard result else { print("Try again"); return }
+    
+    navigationController?.pushViewController(MainSettingsVC(settingsTitle: "Settings"), animated: true)
+    
+    actionButtonSubscriber = nil
   }
   
   private func configureViewController() {
@@ -89,16 +108,19 @@ extension LoginVC {
       }.eraseToAnyPublisher()
   }
   
-  private func actionButtonSubscriptions() {
+  private func actionButtonSubscription() {
     actionButtonSubscriber = validatedToEnableActionButton
       .receive(on: RunLoop.main)
       .assign(to: \.isEnabled, on: actionButton)
-    
+  }
+  
+  private func credentialSubscription() {
     credentialsValidatedSubscriber = validatedCredentials
       .map { $0 != nil }
       .receive(on: RunLoop.main)
       .sink(receiveValue: { result in
         print("Validated = \(result)")
+        self.onCredentialsResultsReady(result)
       })
   }
 }
@@ -119,7 +141,17 @@ extension LoginVC {
   }
   
   func validateCredentials(_ credentials: [String], completion: (Bool) -> Void) {
-    completion(credentials.count == 2)
+    var result = false
+    defer {
+      completion(result)
+    }
+    
+    guard !credentials.isEmpty else {
+      return
+    }
+    
+    result = credentials[0].lowercased() == "vince123" && credentials[1] == "12345678"
+
   }
 }
 
