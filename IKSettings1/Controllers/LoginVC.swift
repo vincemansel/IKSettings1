@@ -10,13 +10,13 @@ import Combine
 
 class LoginVC: UIViewController {
   
+  let statusLabel       = UILabel()
   let usernameTextField = IKLoginTextField()
   let passwordTextField = IKLoginTextField()
   let actionButton      = IKButton()
   
   @Published private var username = ""
   @Published private var password = ""
-  @Published private var buttonTapped = false
   @Published private var credentials = [String]()
   
   private var actionButtonSubscriber: AnyCancellable?
@@ -29,6 +29,7 @@ class LoginVC: UIViewController {
     configureSubviews()
     configureTextFields()
     configureActionButton()
+    configureStatusLabel()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +54,12 @@ class LoginVC: UIViewController {
     actionButton.addTarget(self, action: #selector(onActionButtonTapped), for: .touchUpInside)
   }
   
+  private func configureStatusLabel() {
+    statusLabel.textColor = .systemPink
+    statusLabel.numberOfLines = 0
+    statusLabel.textAlignment = .center
+  }
+  
   @objc func onActionButtonTapped() {
     self.credentials = [self.username, self.password]
   }
@@ -64,7 +71,9 @@ class LoginVC: UIViewController {
       credentialSubscription()
     }
     
-    guard result else { print("Try again"); return }
+    guard result else {
+      statusLabel.text = "Incorrect username or password.\nTry again."
+      return }
     
     navigationController?.pushViewController(MainSettingsVC(settingsTitle: "Settings"), animated: true)
     
@@ -83,9 +92,12 @@ class LoginVC: UIViewController {
   }
   
   private func configureSubviews() {
+    view.addSubview(statusLabel)
     view.addSubview(usernameTextField)
     view.addSubview(passwordTextField)
     view.addSubview(actionButton)
+    
+    statusLabel.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
       usernameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -102,6 +114,12 @@ class LoginVC: UIViewController {
       actionButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
       actionButton.heightAnchor.constraint(equalToConstant: 44),
       actionButton.widthAnchor.constraint(equalToConstant: 150),
+      
+      statusLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      statusLabel.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -10),
+      statusLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      statusLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+      statusLabel.heightAnchor.constraint(equalToConstant: 80)
     ])
   }
 }
@@ -170,6 +188,8 @@ extension LoginVC: UITextFieldDelegate {
     
     if textField == usernameTextField { username = text }
     if textField == passwordTextField { password = text }
+    
+    statusLabel.text = ""
     
     return true
   }
