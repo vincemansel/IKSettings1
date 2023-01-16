@@ -46,9 +46,6 @@ class LoginVC: UIViewController {
     
     actionButtonSubscription()
     credentialSubscription()
-    
-    #warning("This needs fixing... can not deeplink if already logged in. because flushing temp calls LoginVC again.")
-    LoginVC.setLoginStatus(false)
   }
 
   // MARK: Events and Actions
@@ -71,6 +68,7 @@ class LoginVC: UIViewController {
     
     if let nextVC = nextViewController {
       navigationController?.pushViewController(nextVC, animated: false)
+      nextViewController = nil
     }
     else {
       navigationController?.pushViewController(MainSettingsVC(settingsTitle: "Settings"), animated: true)
@@ -111,6 +109,7 @@ class LoginVC: UIViewController {
   
   private func configureViewController() {
     view.backgroundColor = .systemBackground
+    navigationController?.delegate = self
   }
 
   private func configureSubviews() {
@@ -227,3 +226,14 @@ extension LoginVC {
   }
 }
 
+extension LoginVC: UINavigationControllerDelegate {
+  
+  func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+    if toVC is LoginVC && (fromVC is AboutSettingsVC || fromVC is PrivacySettingsVC) {
+      LoginVC.setLoginStatus(false)
+    }
+    
+    return nil
+  }
+}

@@ -72,7 +72,7 @@ final class MainSettingsURLRouterHandler: URLRouterHandlerProtocol {
     }
     else {
       print("Can not deep link now!")
-      if let loginVC = navVC?.viewControllers[0] as? LoginVC {
+      if navVC?.viewControllers.count == 1, let loginVC = navVC?.viewControllers[0] as? LoginVC {
         loginVC.nextViewController = viewController
       }
     }
@@ -105,7 +105,7 @@ final class AboutSettingsURLRouterHandler: URLRouterHandlerProtocol {
     }
     else {
       print("Can not deep link now!")
-      if let loginVC = navVC?.viewControllers[0] as? LoginVC {
+      if navVC?.viewControllers.count == 1, let loginVC = navVC?.viewControllers[0] as? LoginVC {
         loginVC.nextViewController = viewController
       }
     }
@@ -138,7 +138,7 @@ final class PrivacySettingsURLRouterHandler: URLRouterHandlerProtocol {
     }
     else {
       print("Can not deep link now!")
-      if let loginVC = navVC?.viewControllers[0] as? LoginVC {
+      if navVC?.viewControllers.count == 1, let loginVC = navVC?.viewControllers[0] as? LoginVC {
         loginVC.nextViewController = viewController
       }
     }
