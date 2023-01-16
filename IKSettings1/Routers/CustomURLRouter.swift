@@ -65,13 +65,16 @@ final class MainSettingsURLRouterHandler: URLRouterHandlerProtocol {
     }
     
     let navVC = rootViewController as? UINavigationController
-    
+    let viewController = MainSettingsVC(settingsTitle: "Settings")
+
     if LoginVC.getLoginStatus() {
-      let viewController = MainSettingsVC(settingsTitle: "Settings")
       navVC?.pushViewController(viewController, animated: true)
     }
     else {
       print("Can not deep link now!")
+      if let loginVC = navVC?.viewControllers[0] as? LoginVC {
+        loginVC.nextViewController = viewController
+      }
     }
   }
 }
@@ -95,13 +98,16 @@ final class AboutSettingsURLRouterHandler: URLRouterHandlerProtocol {
     }
     
     let navVC = rootViewController as? UINavigationController
-    
+    let viewController = AboutSettingsVC(settingsTitle: "About")
+
     if LoginVC.getLoginStatus() {
-      let viewController = AboutSettingsVC(settingsTitle: "About")
       navVC?.pushViewController(viewController, animated: true)
     }
     else {
       print("Can not deep link now!")
+      if let loginVC = navVC?.viewControllers[0] as? LoginVC {
+        loginVC.nextViewController = viewController
+      }
     }
   }
 }
@@ -125,13 +131,16 @@ final class PrivacySettingsURLRouterHandler: URLRouterHandlerProtocol {
     }
     
     let navVC = rootViewController as? UINavigationController
-
+    let viewController = PrivacySettingsVC(settingsTitle: "Privacy")
+    
     if LoginVC.getLoginStatus() {
-      let viewController = PrivacySettingsVC(settingsTitle: "Privacy")
       navVC?.pushViewController(viewController, animated: true)
     }
     else {
       print("Can not deep link now!")
+      if let loginVC = navVC?.viewControllers[0] as? LoginVC {
+        loginVC.nextViewController = viewController
+      }
     }
   }
 }

@@ -12,6 +12,8 @@ class LoginVC: UIViewController {
   
   static let LoginStatusKey = "com.IKSettings.Login.Status"
   
+  var nextViewController: BaseSettingsVC?
+  
   // MARK: Layout
   
   let statusLabel       = UILabel()
@@ -64,10 +66,21 @@ class LoginVC: UIViewController {
       return
     }
     
-    navigationController?.pushViewController(MainSettingsVC(settingsTitle: "Settings"), animated: true)
+    if let nextViewController = nextViewController {
+      navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    else {
+      navigationController?.pushViewController(MainSettingsVC(settingsTitle: "Settings"), animated: true)
+    }
     
+    resetTextFields()
     actionButtonSubscriber = nil
     LoginVC.setLoginStatus(true)
+  }
+  
+  private func resetTextFields() {
+    usernameTextField.text = ""
+    passwordTextField.text = ""
   }
 
   // MARK: Configuration
