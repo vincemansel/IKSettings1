@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     window = UIWindow(frame: windowScene.coordinateSpace.bounds)
     window?.windowScene = windowScene
-    let navVC = UINavigationController(rootViewController: ViewController())
+    let navVC = UINavigationController(rootViewController: LoginVC())
     window?.rootViewController = navVC
     window?.makeKeyAndVisible()
     
@@ -44,6 +44,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // This occurs shortly after the scene enters the background, or when its session is discarded.
     // Release any resources associated with this scene that can be re-created the next time the scene connects.
     // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+    
+    LoginVC.setLoginStatus(false)
   }
 
   func sceneDidBecomeActive(_ scene: UIScene) {

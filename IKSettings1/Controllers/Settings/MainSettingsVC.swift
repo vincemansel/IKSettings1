@@ -29,10 +29,6 @@ class MainSettingsVC: BaseSettingsVC {
     
     settingsDataSource.setConfiguration(aboutPanel, privacyPanel, logoutPanel)
   }
-  
-  @objc func dismissVC() {
-    dismiss(animated: true)
-  }
 }
 
 // MARK: Settings Actions
@@ -53,11 +49,11 @@ extension MainSettingsVC {
   }
   
   private func logoutAction() {
-    dismissVC()
+    LoginVC.setLoginStatus(false)
+    navigationController?.popViewController(animated: true)
   }
   
   private func genericPrintAction(_ text: String) {
     print(text)
   }
-
 }

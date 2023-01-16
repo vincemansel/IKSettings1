@@ -8,6 +8,9 @@
 /*
  Reference:
  https://benoitpasquier.com/deep-linking-url-scheme-ios/
+ 
+ To test from simulator:
+ xcrun simctl openurl booted "IKSettings1://root"
  */
 import UIKit
 
@@ -61,9 +64,15 @@ final class MainSettingsURLRouterHandler: URLRouterHandlerProtocol {
       return
     }
     
-    let viewController = MainSettingsVC(settingsTitle: "Settings")
     let navVC = rootViewController as? UINavigationController
-    navVC?.pushViewController(viewController, animated: true)
+    
+    if LoginVC.getLoginStatus() {
+      let viewController = MainSettingsVC(settingsTitle: "Settings")
+      navVC?.pushViewController(viewController, animated: true)
+    }
+    else {
+      print("Can not deep link now!")
+    }
   }
 }
 
@@ -85,9 +94,15 @@ final class AboutSettingsURLRouterHandler: URLRouterHandlerProtocol {
       return
     }
     
-    let viewController = AboutSettingsVC(settingsTitle: "About")
     let navVC = rootViewController as? UINavigationController
-    navVC?.pushViewController(viewController, animated: true)
+    
+    if LoginVC.getLoginStatus() {
+      let viewController = AboutSettingsVC(settingsTitle: "About")
+      navVC?.pushViewController(viewController, animated: true)
+    }
+    else {
+      print("Can not deep link now!")
+    }
   }
 }
 
@@ -109,8 +124,14 @@ final class PrivacySettingsURLRouterHandler: URLRouterHandlerProtocol {
       return
     }
     
-    let viewController = PrivacySettingsVC(settingsTitle: "Privacy")
     let navVC = rootViewController as? UINavigationController
-    navVC?.pushViewController(viewController, animated: true)
+
+    if LoginVC.getLoginStatus() {
+      let viewController = PrivacySettingsVC(settingsTitle: "Privacy")
+      navVC?.pushViewController(viewController, animated: true)
+    }
+    else {
+      print("Can not deep link now!")
+    }
   }
 }

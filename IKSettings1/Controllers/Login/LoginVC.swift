@@ -10,6 +10,8 @@ import Combine
 
 class LoginVC: UIViewController {
   
+  static let LoginStatusKey = "com.IKSettings.Login.Status"
+  
   // MARK: Layout
   
   let statusLabel       = UILabel()
@@ -59,17 +61,15 @@ class LoginVC: UIViewController {
     
     guard result else {
       statusLabel.text = "Incorrect username or password.\nTry again."
-      return }
+      return
+    }
     
     navigationController?.pushViewController(MainSettingsVC(settingsTitle: "Settings"), animated: true)
     
     actionButtonSubscriber = nil
+    LoginVC.setLoginStatus(true)
   }
-  
-  @objc func dismissVC() {
-    dismiss(animated: true)
-  }
-  
+
   // MARK: Configuration
   
   private func configureTextFields() {
@@ -95,9 +95,6 @@ class LoginVC: UIViewController {
   
   private func configureViewController() {
     view.backgroundColor = .systemBackground
-    
-    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
-    navigationItem.rightBarButtonItem = doneButton
   }
 
   private func configureSubviews() {
@@ -201,5 +198,15 @@ extension LoginVC: UITextFieldDelegate {
     statusLabel.text = ""
     
     return true
+  }
+}
+
+extension LoginVC {
+  static func setLoginStatus(_ status: Bool) {
+    UserDefaults.standard.set(status, forKey: LoginVC.LoginStatusKey)
+  }
+  
+  static func getLoginStatus() -> Bool {
+    UserDefaults.standard.bool(forKey: LoginVC.LoginStatusKey)
   }
 }
