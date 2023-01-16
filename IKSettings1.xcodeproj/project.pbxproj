@@ -26,6 +26,7 @@
 		AF6CF6EB297355AD00F592BE /* IKLoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6EA297355AD00F592BE /* IKLoginTextField.swift */; };
 		AF6CF6ED2973563B00F592BE /* IKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6CF6EC2973563B00F592BE /* IKButton.swift */; };
 		AFC501582974BBEC00DDE623 /* PrivacySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC501572974BBEC00DDE623 /* PrivacySettingsVC.swift */; };
+		AFC5015D2974D00700DDE623 /* CustomURLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC5015C2974D00700DDE623 /* CustomURLRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		AF6CF6EA297355AD00F592BE /* IKLoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKLoginTextField.swift; sourceTree = "<group>"; };
 		AF6CF6EC2973563B00F592BE /* IKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKButton.swift; sourceTree = "<group>"; };
 		AFC501572974BBEC00DDE623 /* PrivacySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsVC.swift; sourceTree = "<group>"; };
+		AFC5015C2974D00700DDE623 /* CustomURLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomURLRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		AF6CF6B5297241E000F592BE /* IKSettings1 */ = {
 			isa = PBXGroup;
 			children = (
+				AFC5015B2974CFE600DDE623 /* Routers */,
 				AF6CF6DD2972797200F592BE /* DataSources */,
 				AF6CF6DA2972791E00F592BE /* Protocols */,
 				AF6CF6CC2972447100F592BE /* Cells */,
@@ -170,6 +173,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		AFC5015B2974CFE600DDE623 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				AFC5015C2974D00700DDE623 /* CustomURLRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,6 +254,7 @@
 				AF6CF6DF2972799500F592BE /* MainSettingsDataSource.swift in Sources */,
 				AF6CF6E7297343D400F592BE /* AboutSettingsVC.swift in Sources */,
 				AF6CF6D42972526A00F592BE /* IKActionCell.swift in Sources */,
+				AFC5015D2974D00700DDE623 /* CustomURLRouter.swift in Sources */,
 				AF6CF6CE2972449C00F592BE /* IKSettingsCell.swift in Sources */,
 				AF6CF6BB297241E000F592BE /* ViewController.swift in Sources */,
 				AF6CF6DC2972795400F592BE /* SetingsProtocols.swift in Sources */,

@@ -10,10 +10,20 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
+  
+  lazy var urlRouterCoordinator: URLRouterCoordinatorProtocol = {
+      return URLRouterCoordinator(handlers: [
+          MainSettingsURLRouterHandler(rootViewController: self.rootViewController),
+          AboutSettingsURLRouterHandler(rootViewController: self.rootViewController),
+          PrivacySettingsURLRouterHandler(rootViewController: self.rootViewController)
+      ])
+  }()
 
+  var rootViewController: UIViewController? {
+      return window?.rootViewController
+  }
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
     guard let windowScene = (scene as? UIWindowScene) else { return }
     
     window = UIWindow(frame: windowScene.coordinateSpace.bounds)
@@ -21,6 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let navVC = UINavigationController(rootViewController: ViewController())
     window?.rootViewController = navVC
     window?.makeKeyAndVisible()
+    
+    // This opens the app if not currently launched
+    if let urlContext = connectionOptions.urlContexts.first {
+      let url = urlContext.url
+      self.urlRouterCoordinator.handleURL(url)
+    }
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
@@ -50,7 +66,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
   }
-
-
+  
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    guard let firstUrl = URLContexts.first?.url else {
+      return
+    }
+    
+    // This opens the app if backgrounded or susupended.
+    urlRouterCoordinator.handleURL(firstUrl)
+  }
 }
 
