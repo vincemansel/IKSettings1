@@ -68,7 +68,7 @@ final class MainSettingsURLRouterHandler: URLRouterHandlerProtocol {
     let viewController = MainSettingsVC(settingsTitle: "Settings")
 
     if LoginVC.getLoginStatus() {
-      navVC?.pushViewController(viewController, animated: true)
+      URLRouter.flushNavigationStack(navVC, andPush: viewController)
     }
     else {
       print("Can not deep link now!")
@@ -101,7 +101,7 @@ final class AboutSettingsURLRouterHandler: URLRouterHandlerProtocol {
     let viewController = AboutSettingsVC(settingsTitle: "About")
 
     if LoginVC.getLoginStatus() {
-      navVC?.pushViewController(viewController, animated: true)
+      URLRouter.flushNavigationStack(navVC, andPush: viewController)
     }
     else {
       print("Can not deep link now!")
@@ -134,7 +134,7 @@ final class PrivacySettingsURLRouterHandler: URLRouterHandlerProtocol {
     let viewController = PrivacySettingsVC(settingsTitle: "Privacy")
     
     if LoginVC.getLoginStatus() {
-      navVC?.pushViewController(viewController, animated: true)
+      URLRouter.flushNavigationStack(navVC, andPush: viewController)
     }
     else {
       print("Can not deep link now!")
@@ -142,5 +142,15 @@ final class PrivacySettingsURLRouterHandler: URLRouterHandlerProtocol {
         loginVC.nextViewController = viewController
       }
     }
+  }
+}
+
+enum URLRouter {
+  static func flushNavigationStack(_ navigationController: UINavigationController?,
+                                   andPush viewController: BaseSettingsVC) {
+    while let count = navigationController?.viewControllers.count, count > 1 {
+      _ = navigationController?.viewControllers.popLast()
+    }
+    navigationController?.pushViewController(viewController, animated: true)
   }
 }
